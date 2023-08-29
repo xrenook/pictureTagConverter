@@ -90,8 +90,18 @@ function PictureGenerator() {
   };
 
   useEffect(() => {
-    updateCurrentMedia();
-  }, [windowWidth]);
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    updateCurrentMedia(); // Call the function
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  });
 
   const copyToClipboard = () => {
     const textarea = document.querySelector("textarea");

@@ -115,3 +115,7 @@ textarea {
   color: white;
   background-color: green;
 }
+
+img {
+  max-width: 100%;
+}
