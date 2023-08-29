@@ -26,10 +26,12 @@ function PictureGenerator() {
 
     window.addEventListener("resize", handleResize);
 
+    updateCurrentMedia(); // Call the function
+
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, []);
+  });
 
   const handleImageUrlChange = (event, index) => {
     const updatedImages = [...images];
@@ -80,6 +82,10 @@ function PictureGenerator() {
     return `<picture>\n${sources}\n${imgTag}\n</picture>`;
   };
 
+  useEffect(() => {
+    updateCurrentMedia();
+  }, [windowWidth]);
+
   const updateCurrentMedia = () => {
     for (const image of images) {
       if (window.matchMedia(image.media).matches) {
@@ -88,20 +94,6 @@ function PictureGenerator() {
       }
     }
   };
-
-  useEffect(() => {
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    updateCurrentMedia(); // Call the function
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  });
 
   const copyToClipboard = () => {
     const textarea = document.querySelector("textarea");
