@@ -1,23 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import PictureGenerator from "./components/PictureGenerator";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="main">
+      <h1>Picture Tag Generator</h1>
+      <p>
+        {
+          "This webapp is used to generate responsive <picture> tag by inputing image urls, Desktop url is compulsory."
+        }
+      </p>
+      <ul>
+        <li>Destop: (min-width: 1024px)</li>
+        <li>Tablet: (min-width:769px) and (max-width: 1023px)</li>
+        <li>Mobile: (max-width: 768px)</li>
+      </ul>
+      <p>You can click code textarea to copy into your clipboard.</p>
+      <PictureGenerator />
     </div>
   );
 }
