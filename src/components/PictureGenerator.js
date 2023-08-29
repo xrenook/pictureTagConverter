@@ -82,10 +82,6 @@ function PictureGenerator() {
     return `<picture>\n${sources}\n${imgTag}\n</picture>`;
   };
 
-  useEffect(() => {
-    updateCurrentMedia();
-  }, [windowWidth]);
-
   const updateCurrentMedia = () => {
     for (const image of images) {
       if (window.matchMedia(image.media).matches) {
